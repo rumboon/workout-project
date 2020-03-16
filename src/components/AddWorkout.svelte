@@ -43,6 +43,16 @@
 </form>
 
 <style>
+    label {
+        color: var(--color-green);
+    }
+
+    input[type="number"] {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--color-green);
+    }
+    
     .input-section {
         display: flex;
         flex-wrap: wrap;

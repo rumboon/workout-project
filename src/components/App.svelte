@@ -48,10 +48,14 @@
 </main>
 
 <style>
+    :root {
+        --color-green: #426d53;
+    }
+    
     :global(html) {
         box-sizing: border-box;
 
-        font-size: 14px;
+        font-size: 20px;
     }
     :global(*, *:before, *:after) {
         box-sizing: inherit;
