@@ -1,23 +1,23 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
 
     const handleAdd = (e) => {
-      const { reps, kg, tut, withBodyWeight } = e.target;
+      const { reps, kg, tut, rested, withBodyWeight } = e.target;
 
-      dispatch('add', {
+      dispatch("add", {
         item: {
           reps: reps.value,
           kg: kg.value,
           tut: tut.value,
+          rested: rested.value,
           withBodyWeight: withBodyWeight.checked,
-        }
+        },
       });
 
       e.target.reset();
-    }
-
+    };
 </script>
 
 <form on:submit|preventDefault={handleAdd}>
@@ -33,6 +33,10 @@
         <div class="full-width">
             <label for="tut">TUT</label>
             <input id="tut" class="full-width" type="number" required />
+        </div>
+        <div class="full-width">
+            <label for="rested">Rested</label>
+            <input id="rested" class="full-width" type="number" required />
         </div>
     </div>
     <label for="withBodyWeight">
@@ -52,7 +56,7 @@
         border: none;
         border-bottom: 1px solid var(--color-green);
     }
-    
+
     .input-section {
         display: flex;
         flex-wrap: wrap;

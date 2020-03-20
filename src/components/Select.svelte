@@ -1,5 +1,5 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
 
@@ -9,10 +9,9 @@
 
     export const handleSelect = (e) => {
       const { value } = e.target;
-      if (!value) return;
 
-      dispatch('select', { value });
-    }
+      dispatch("select", { value });
+    };
 </script>
 
 <div>

@@ -7,6 +7,10 @@
     "es6": true,
     "browser": true
   },
+  "extends": [
+    "eslint:recommended",
+    "standard"
+  ],
   "plugins": [
     "svelte3"
   ],
@@ -15,7 +19,19 @@
       "files": [
         "**/*.svelte"
       ],
-      "processor": "svelte3/svelte3"
+      "processor": "svelte3/svelte3",
+      "rules": {
+        "import/first": "off",
+        "import/no-duplicates": "off",
+        "import/no-mutable-exports": "off",
+        "import/no-unresolved": "off",
+        "no-multiple-empty-lines": "off"
+      }
     }
-  ]
+  ],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "always-multiline"]
+  }
 }
