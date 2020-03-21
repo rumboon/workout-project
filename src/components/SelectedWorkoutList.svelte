@@ -1,5 +1,4 @@
 <script>
-    import classNames from "classnames";
     import BodyWeightImage from "./svg/BodyWeightImage.svelte";
     import WeightImage from "./svg/WeightImage.svelte";
     import TimeUnderTensionImage from "./svg/TimeUnderTensionImage.svelte";
@@ -81,6 +80,7 @@
 
         justify-items: center;
 
+        height: 2rem;
         margin: 0.5em;
         padding: 0.5em;
 
