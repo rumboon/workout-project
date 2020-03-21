@@ -1,17 +1,25 @@
 <script>
-    import { workout } from "../stores";
-    import Select from "./Select.svelte";
+    import { workouts } from "../stores";
+    import Exercise from "./Exercise.svelte";
+    import Time from './Time.svelte';
     import Form from "./Form.svelte";
     import SelectedWorkoutList from "./SelectedWorkoutList.svelte";
 
-    // TODO set these values back to empty
-    let selectedWorkout = "squad";
-    let selectedTime = "13-03-2020 11.00";
 
-    const handleWorkoutSelection = (e) => {
+    let selectedTime = "";
+    let selectedExercise = "";
+
+    const handleExerciseSelection = (e) => {
       const { value } = e.detail;
-      selectedWorkout = value;
+      selectedExercise = value;
       selectedTime = "";
+    };
+
+    const handleExerciseAdd = (e) => {
+      const { value } = e.target.exercise;
+      if (!value) return;
+
+      workouts.addExercise(value);
     };
 
     const handleTimeSelection = (e) => {
@@ -19,33 +27,45 @@
       selectedTime = value;
     };
 
+    const handleTimeAdd = () => {
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = `0${now.getMonth()}`.slice(-2);
+      const day = `0${now.getDate()}`.slice(-2);
+      const hours = `0${now.getHours()}`.slice(-2);
+      const minutes = `0${now.getMinutes()}`.slice(-2);
+
+      const dateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
+      workouts.addTime(selectedExercise, dateTime);
+    };
+
     const handleAdd = (e) => {
       const { item } = e.detail;
-      workout.add(selectedWorkout, selectedTime, item);
+      workouts.add(selectedExercise, selectedTime, item);
     };
 </script>
 
 <main>
     <div class="section">
-        <Select
-            name="Workout"
-            selected={selectedWorkout}
-            options={Object.keys($workout)}
-            on:select={handleWorkoutSelection}
+        <Exercise
+            options={Object.keys($workouts)}
+            selected={selectedExercise}
+            onSelect={handleExerciseSelection}
+            onAdd={handleExerciseAdd}
         />
-        {#if selectedWorkout}
-            <Select
-                name="Time"
+        {#if selectedExercise}
+            <Time
+                options={Object.keys($workouts[selectedExercise])}
                 selected={selectedTime}
-                options={Object.keys($workout[selectedWorkout])}
-                on:select={handleTimeSelection}
-
-                />
-            {/if}
+                onSelect={handleTimeSelection}
+                onAdd={handleTimeAdd}
+            />
+        {/if}
         </div>
-    {#if selectedWorkout && selectedTime}
+    {#if selectedExercise && selectedTime}
         <Form on:add={handleAdd} />
-        <SelectedWorkoutList items={$workout[selectedWorkout][selectedTime]} />
+        <SelectedWorkoutList items={$workouts[selectedExercise][selectedTime]} />
     {/if}
 </main>
 

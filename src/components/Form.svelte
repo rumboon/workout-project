@@ -36,7 +36,7 @@
         </div>
         <div class="full-width">
             <label for="rested">Rested</label>
-            <input id="rested" class="full-width" type="number" required />
+            <input id="rested" class="full-width" type="number" />
         </div>
     </div>
     <label for="withBodyWeight">

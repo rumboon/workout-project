@@ -58,19 +58,45 @@ const mockData = {
   },
 };
 
-function createWorkout () {
-  const { subscribe, update } = writable(mockData);
+const STORE = "workouts";
+
+function readStore () {
+  return JSON.parse(localStorage.getItem(STORE) || "{}");
+}
+
+function saveStore (value) {
+  localStorage.setItem(STORE, JSON.stringify(value));
+}
+
+function createWorkouts () {
+  const { subscribe, update } = writable(readStore());
+
+  // Updates the svelte store and localStorage
+  const updateStore = (callback) => update(prevState => {
+    const state = callback(prevState);
+    saveStore(state);
+    return state;
+  });
 
   return {
     subscribe,
-    add: (workout, datetime, item) => update(prevState => {
-      prevState[workout][datetime] = [
-        ...prevState[workout][datetime],
+    add: (exercise, datetime, item) => updateStore(prevState => {
+      prevState[exercise][datetime] = [
+        ...prevState[exercise][datetime],
         item,
       ];
+
+      return prevState;
+    }),
+    addExercise: (exercise) => updateStore(prevState => {
+      prevState[exercise] = {};
+      return prevState;
+    }),
+    addTime: (exercise, time) => updateStore(prevState => {
+      prevState[exercise][time] = [];
       return prevState;
     }),
   };
 }
 
-export const workout = createWorkout();
+export const workouts = createWorkouts();
