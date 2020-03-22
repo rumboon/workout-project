@@ -61,6 +61,7 @@ const mockData = {
 const STORE = "workouts";
 
 function readStore () {
+  return mockData;
   return JSON.parse(localStorage.getItem(STORE) || "{}");
 }
 

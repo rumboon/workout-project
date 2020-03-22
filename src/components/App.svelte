@@ -1,7 +1,8 @@
 <script>
     import { workouts } from "../stores";
+    import SearchInput from "./SearchInput.svelte";
     import Exercise from "./Exercise.svelte";
-    import Time from './Time.svelte';
+    import Time from "./Time.svelte";
     import Form from "./Form.svelte";
     import SelectedWorkoutList from "./SelectedWorkoutList.svelte";
 
@@ -47,6 +48,7 @@
 </script>
 
 <main>
+    <SearchInput />
     <div class="section">
         <Exercise
             options={Object.keys($workouts)}
