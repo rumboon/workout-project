@@ -1,67 +1,57 @@
 import { writable } from "svelte/store";
 
 const mockData = {
-  squad: {
-    "13-03-2020 11.00": [
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true, rested: 32 },
-      { reps: 6, kg: 50, tut: 40, rested: 198 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true },
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true, rested: 110 },
-      { reps: 6, kg: 50, tut: 40 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true, rested: 120 },
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true },
-      { reps: 6, kg: 50, tut: 40 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true },
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true },
-      { reps: 6, kg: 50, tut: 40 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true },
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true },
-      { reps: 6, kg: 50, tut: 40 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true },
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true },
-      { reps: 6, kg: 50, tut: 40 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true },
-      { reps: 10, kg: 50, tut: 60, withBodyWeight: true },
-      { reps: 8, kg: 50, tut: 55, withBodyWeight: true },
-      { reps: 6, kg: 50, tut: 40 },
-      { reps: 5, kg: 50, tut: 30, withBodyWeight: true },
-    ],
-  },
-  deadlift: {
-    "13-03-2020 11.00": [
-      { reps: 10, kg: 80, tut: 60 },
-      { reps: 10, kg: 90, tut: 55 },
-      { reps: 8, kg: 100, tut: 50 },
-      { reps: 7, kg: 100, tut: 50 },
-      { reps: 7, kg: 100, tut: 50 },
-    ],
-  },
-  pullup: {
-    "13-03-2020 11.00": [
-      { reps: 10, kg: 0, tut: 34, withBodyWeight: true },
-      { reps: 10, kg: 10, tut: 40, withBodyWeight: true },
-      { reps: 8, kg: 10, tut: 30, withBodyWeight: true },
-    ],
-  },
-  dips: {
-    "14-03-2020 12.15": [
-      { reps: 10, kg: 0, tut: 34, withBodyWeight: true },
-      { reps: 10, kg: 10, tut: 40, withBodyWeight: true },
-      { reps: 8, kg: 10, tut: 30, withBodyWeight: true },
-    ],
-  },
+  "13-03-2020 11.00": [
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true, rested: 32 },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40, rested: 198 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true },
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true, rested: 110 },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true, rested: 120 },
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true },
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true },
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true },
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true },
+    { exercise: "squad", reps: 10, kg: 50, tut: 60, withBodyWeight: true },
+    { exercise: "squad", reps: 8, kg: 50, tut: 55, withBodyWeight: true },
+    { exercise: "squad", reps: 6, kg: 50, tut: 40 },
+    { exercise: "squad", reps: 5, kg: 50, tut: 30, withBodyWeight: true },
+  ],
+  "14-03-2020 11.00": [
+    { exercise: "deadlift", reps: 10, kg: 80, tut: 60 },
+    { exercise: "deadlift", reps: 10, kg: 90, tut: 55 },
+    { exercise: "deadlift", reps: 8, kg: 100, tut: 50 },
+    { exercise: "deadlift", reps: 7, kg: 100, tut: 50 },
+    { exercise: "deadlift", reps: 7, kg: 100, tut: 50 },
+  ],
+  "15-03-2020 11.00": [
+    { exercise: "pullup", reps: 10, kg: 0, tut: 34, withBodyWeight: true },
+    { exercise: "dips", reps: 10, kg: 10, tut: 40, withBodyWeight: true },
+    { exercise: "pullup", reps: 8, kg: 10, tut: 30, withBodyWeight: true },
+    { exercise: "dips", reps: 10, kg: 0, tut: 34, withBodyWeight: true },
+    { exercise: "pullup", reps: 10, kg: 10, tut: 40, withBodyWeight: true },
+    { exercise: "dips", reps: 8, kg: 10, tut: 30, withBodyWeight: true },
+  ],
 };
 
 const STORE = "workouts";
 
 function readStore () {
-  return mockData;
+  // return mockData;
   return JSON.parse(localStorage.getItem(STORE) || "{}");
 }
 
@@ -81,20 +71,16 @@ function createWorkouts () {
 
   return {
     subscribe,
-    add: (exercise, datetime, item) => updateStore(prevState => {
-      prevState[exercise][datetime] = [
-        ...prevState[exercise][datetime],
+    add: (datetime, item) => updateStore(prevState => {
+      prevState[datetime] = [
+        ...prevState[datetime],
         item,
       ];
 
       return prevState;
     }),
-    addExercise: (exercise) => updateStore(prevState => {
-      prevState[exercise] = {};
-      return prevState;
-    }),
-    addTime: (exercise, time) => updateStore(prevState => {
-      prevState[exercise][time] = [];
+    addTime: (time) => updateStore(prevState => {
+      prevState[time] = [];
       return prevState;
     }),
   };

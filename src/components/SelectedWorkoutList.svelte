@@ -24,6 +24,7 @@
 </script>
 
 <header class="grid heading">
+    <div />
     <RepetitionImage color={imageColor} />
     <WeightImage color={imageColor} />
     <TimeUnderTensionImage color={imageColor} />
@@ -36,6 +37,7 @@
             </li>
         {/if}
         <li class="grid" >
+            <div>{item.exercise}</div>
             <div>{item.reps}</div>
             <div>{item.kg}</div>
             <div>{item.tut}</div>
@@ -73,7 +75,7 @@
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: 2fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;

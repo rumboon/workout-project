@@ -1,27 +1,10 @@
 <script>
     import { workouts } from "./stores";
-    import SearchInput from "./components/SearchInput.svelte";
-    import Exercise from "./components/Exercise.svelte";
     import Time from "./components/Time.svelte";
     import Form from "./components/Form.svelte";
     import SelectedWorkoutList from "./components/SelectedWorkoutList.svelte";
 
-
     let selectedTime = "";
-    let selectedExercise = "";
-
-    const handleExerciseSelection = (e) => {
-      const { value } = e.detail;
-      selectedExercise = value;
-      selectedTime = "";
-    };
-
-    const handleExerciseAdd = (e) => {
-      const { value } = e.target.exercise;
-      if (!value) return;
-
-      workouts.addExercise(value);
-    };
 
     const handleTimeSelection = (e) => {
       const { value } = e.detail;
@@ -38,36 +21,27 @@
       const minutes = `0${now.getMinutes()}`.slice(-2);
 
       const dateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
-      workouts.addTime(selectedExercise, dateTime);
+      workouts.addTime(dateTime);
     };
 
     const handleAdd = (e) => {
       const { item } = e.detail;
-      workouts.add(selectedExercise, selectedTime, item);
+      workouts.add(selectedTime, item);
     };
 </script>
 
 <main>
-    <SearchInput />
     <div class="section">
-        <Exercise
+        <Time
             options={Object.keys($workouts)}
-            selected={selectedExercise}
-            onSelect={handleExerciseSelection}
-            onAdd={handleExerciseAdd}
+            selected={selectedTime}
+            onSelect={handleTimeSelection}
+            onAdd={handleTimeAdd}
         />
-        {#if selectedExercise}
-            <Time
-                options={Object.keys($workouts[selectedExercise])}
-                selected={selectedTime}
-                onSelect={handleTimeSelection}
-                onAdd={handleTimeAdd}
-            />
-        {/if}
-        </div>
-    {#if selectedExercise && selectedTime}
+    </div>
+    {#if selectedTime}
         <Form on:add={handleAdd} />
-        <SelectedWorkoutList items={$workouts[selectedExercise][selectedTime]} />
+        <SelectedWorkoutList items={$workouts[selectedTime]} />
     {/if}
 </main>
 
